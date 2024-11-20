@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-  steps:
+    steps:
 # Étape 1 : Vérifier le code depuis GitHub
     - name: Checkout code
       uses: actions/checkout@v2
@@ -35,10 +35,10 @@ jobs:
 # Étape 6 : Pousser l’image Docker sur Docker Hub ou un registre
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
-       with:
+      with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Push Docker Image
-       run: |
+      run: |
          docker tag appli-flask asmae/appli-flask:latest
          docker push asmae/my-flask-app:latest
