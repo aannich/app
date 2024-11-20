@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: ‘3.8’
+        python-version: '3.8'
 # Étape 3 : Installer les dépendances
     - name: Install dependencies
       run: |
@@ -28,7 +28,7 @@ jobs:
 # Ici, vous pourriez lancer des
         tests, par exemple avec pytest
 # pytest
-        echo "Tests exécutés »
+        echo "Tests exécutés"
 # Étape 5 : Build l’image Docker
     - name: Build Docker Image
       run: |
