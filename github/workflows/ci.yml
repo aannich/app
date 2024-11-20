@@ -23,6 +23,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 # Étape 4 : Exécuter des tests
+
+
     - name: Run tests
       run: |
 # Ici, vous pourriez lancer des tests, par exemple avec pytest
