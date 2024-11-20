@@ -1,0 +1,45 @@
+
+name: CI Pipeline
+on:
+  push:
+     branches: [master]
+  pull_request:
+     branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  steps:
+# Étape 1 : Vérifier le code depuis GitHub
+    - name: Checkout code
+      uses: actions/checkout@v2
+# Étape 2 : Configurer Python
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ‘3.8’
+# Étape 3 : Installer les dépendances
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+# Étape 4 : Exécuter des tests
+    - name: Run tests
+      run: |
+# Ici, vous pourriez lancer des
+        tests, par exemple avec pytest
+# pytest
+        echo "Tests exécutés »
+# Étape 5 : Build l’image Docker
+    - name: Build Docker Image
+      run: |
+       docker build -t appli-flask .
+# Étape 6 : Pousser l’image Docker sur Docker Hub ou un registre
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+       with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Push Docker Image
+       run: |
+         docker tag appli-flask asmae/appli-flask:latest
+         docker push asmae/my-flask-app:latest
