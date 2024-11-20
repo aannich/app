@@ -43,4 +43,4 @@ jobs:
     - name: Push Docker Image
        run: |
          docker tag appli-flask asmae/appli-flask:latest
-         docker push asmae/apply-flask:latest
+         docker push asmae/appli-flask:latest
